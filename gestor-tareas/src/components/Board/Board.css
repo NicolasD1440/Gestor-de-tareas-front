@@ -1,0 +1,7 @@
+.Board{
+    display:flex;
+    flex-direction:row;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}

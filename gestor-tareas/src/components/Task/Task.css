@@ -1,0 +1,45 @@
+.Task{
+    width:100%;
+    margin:0px;
+    /*borde para hacer pruebas de tamaño*/
+   /* border:2px solid black;*/
+    border-radius:10px;
+    background:white;
+    box-sizing:border-box;
+    padding:15px;
+
+}
+
+.Task h3{
+
+    margin:0;
+
+}
+
+.task-category{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.task-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.task-status{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #22C55E; /* Verde */
+}
+
+.Task h5{
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+     font-weight:500;
+     font-size:13px;
+}

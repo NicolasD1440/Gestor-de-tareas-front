@@ -1,0 +1,68 @@
+.Column{
+    border-radius: 10px;
+    background: #EEF2F5;
+    flex: 1 1 300px;
+    max-width: 400px;
+    height: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+     position: relative;
+}
+
+.Column::after{
+    content:"";
+    border-radius: 10px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:30px;
+    background:linear-gradient(
+        transparent,
+        #EEF2F5
+    );
+
+    pointer-events:none;
+}
+
+.titles{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px;
+
+}
+
+.titles-options{
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el botón y el icono */
+}
+
+.AddButton{
+
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:18px;
+
+}
+
+.tasks{
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+        scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+
+.tasks:hover{
+    scrollbar-color:#BFC5CB transparent;
+}
