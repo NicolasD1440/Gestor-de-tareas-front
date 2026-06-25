@@ -10,6 +10,15 @@
      position: relative;
 }
 
+@media (max-width:768px){
+
+    .Column{
+        width:100%;
+        max-width:none;
+    }
+
+}
+
 .Column::after{
     content:"";
     border-radius: 10px;

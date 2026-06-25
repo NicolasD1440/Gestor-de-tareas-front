@@ -6,15 +6,6 @@
     flex-direction:column;
     border-right:1px solid #E5E7EB;
 }
-@media(max-width:768px){
-
-    .Sidebar{
-
-        display:none;
-
-    }
-
-}
 
 .Sidebar-logo{
     display:flex;
@@ -52,4 +43,40 @@
 .Sidebar-item i{
     width:20px;
     text-align:center;
+}
+
+@media (max-width:768px){
+
+    .Sidebar{
+
+        width:70px;
+
+    }
+
+    .Sidebar-logo{
+
+        justify-content:center;
+        padding:25px 0;
+
+    }
+
+    .Sidebar-logo h2{
+
+        display:none;
+
+    }
+
+    .Sidebar-item{
+
+        justify-content:center;
+        padding:18px 0;
+
+    }
+
+    .Sidebar-item span{
+
+        display:none;
+
+    }
+
 }

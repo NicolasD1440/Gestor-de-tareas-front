@@ -18,10 +18,25 @@
 }
 
 .MainContent{
-    flex: 1;
-    padding: 40px;
+   flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-sizing: border-box;
     background: #F5F5F5;
-    overflow: auto;
+    overflow-y: auto;
+}
+@media (max-width: 768px){
+
+    .Home{
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .MainContent{
+        overflow: visible;
+    }
+
 }
 
 .MainContent h1{

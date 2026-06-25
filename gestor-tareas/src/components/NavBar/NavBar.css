@@ -1,0 +1,41 @@
+.Nav-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* O el ancho que prefieras */
+  padding: 8px 12px;
+  /* Si quieres el fondo gris sutil de la imagen o dejarlo transparente */
+  background-color: transparent; 
+}
+
+.search-icon {
+  color: #6b7280; /* Gris intermedio para el icono */
+  margin-right: 12px; /* Espacio entre el icono y el texto */
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 16px;
+  color: #374151; /* Color del texto al escribir */
+}
+
+/* Opcional: Cambiar el color del texto del placeholder */
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
