@@ -22,9 +22,9 @@ function NavBar() {
       </div>
 
       <div className="options">
-        <i class="fa-regular fa-bell"></i>
-        <i class="fa-regular fa-circle-question"></i>
-        <i class="fa-regular fa-circle-user"></i>
+        <i className="fa-regular fa-bell"></i>
+        <i className="fa-regular fa-circle-question"></i>
+        <i className="fa-regular fa-circle-user"></i>
       </div>
     </div>
   );

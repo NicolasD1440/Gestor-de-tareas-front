@@ -11,7 +11,7 @@ function Column({ title, tasks }) {
         <h2>{title}</h2>
         <div className="titles-options">
          <button className="AddButton">
-            <i class="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus"></i>
         </button>
         <a href=""><i className="fa-solid fa-ellipsis"></i></a>
         </div>

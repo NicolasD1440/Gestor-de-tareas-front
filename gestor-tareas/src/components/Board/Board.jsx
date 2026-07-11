@@ -1,73 +1,59 @@
 import Column from "../Colum/Colum";
 import './Board.css'
+import { useEffect, useState } from "react";
+import  {getTasks} from "../../services/taskService";
+
 function Board() {
 
-    const columns = [
-        {
-            id: 1,
-            title: "Por hacer",
-            tasks: [
-                {
-                    id: 1,
-                    title: "Aprender React",
-                    category: "Categoria",
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-                },
-                {
-                    id: 2,
-                    title: "Crear Backend",
-                    category: "Categoria",
-                    text: "hola 2"
-                },
-                  {
-                    id: 3,
-                    title: "Crear Backend",
-                    category: "Categoria",
-                    text: "hola 3"
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "En progreso",
-            tasks: [
-                {
-                    id: 3,
-                    title: "Diseñar Login",
-                    category: "Categoria",
-                    text: "hola 1"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Hecho",
-            tasks: [
-                {
-                    id: 4,
-                    title: "Crear proyecto",
-                    category: "Categoria",
-                    text: "hola 1"
-                }
-            ]
-        }
-    ];
+        const [tasks, setTasks] = useState([]);
 
+        useEffect(() => {
+            loadTasks();
+        }, []);
+
+        async function loadTasks() {
+            try {
+                const data = await getTasks();
+
+                console.log(data); // <-- Verifica la respuesta
+
+                setTasks(data);
+            } catch (error) {
+                console.error(error);
+            }
+}
+        const columns = [
+    {
+        id: 1,
+        title: "Por hacer",
+        tasks: tasks.filter(task => task.status === "Por hacer")
+    },
+    {
+        id: 2,
+        title: "En progreso",
+        tasks: tasks.filter(task => task.status === "En progreso")
+    },
+    {
+        id: 3,
+        title: "Hecho",
+        tasks: tasks.filter(task => task.status === "Hecho")
+    }
+];
     return (
 
         <div className="Board">
 
-            {columns.map(column => (
+    {columns.map(column => (
 
-                <Column
-                    key={column.id}
-                    title={column.title}
-                    tasks={column.tasks}
-                />
+        <Column
+            key={column.id}
+            title={column.title}
+            tasks={column.tasks}
+        />
 
-            ))}
+    ))}
 
-        </div>
+</div>
 
     );
 
