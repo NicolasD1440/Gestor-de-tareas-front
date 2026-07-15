@@ -1,12 +1,26 @@
 import "./TaskMenu.css";
+import Task from '../Task/Task.jsx'
 
-function TaskMenu({ closeMenu }) {
+
+function TaskMenu({  task, onEdit, onDelete, onDuplicate, closeMenu  }) { 
+
+         function handleEdit(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            onEdit(task, rect);
+            closeMenu();
+        }
+
+        function handleDuplicate(){
+            console.log(task);
+        }
     return (
         <div className="task-menu">
-            <button onClick={closeMenu}>✏️ Editar</button>
-            <button onClick={closeMenu}>📋 Duplicar</button>
-            <button onClick={closeMenu}>➡️ Mover</button>
-            <button className="delete">🗑 Eliminar</button>
+            <button onClick={handleEdit}>✏️ Editar</button>
+            <button onClick={()=>{ onDuplicate(task);
+                                   closeMenu();}}>📋 Duplicar</button>
+            <button onClick={()=>{ onDelete(task.id);
+                                   closeMenu();}}>🗑 Eliminar
+            </button>
         </div>
     );
 }
