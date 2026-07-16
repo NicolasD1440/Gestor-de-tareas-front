@@ -11,10 +11,6 @@ const menu = [
         title: "Tablero"
     },
     {
-        icon: "fa-solid fa-chart-simple",
-        title: "Analitica"
-    },
-    {
         icon: "fa-regular fa-circle-user",
         title: "Perfil"
     }

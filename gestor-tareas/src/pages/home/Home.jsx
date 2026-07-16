@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { getTasks } from "../../services/taskService";
 import './Home.css'
 
+
 function Home() {
     const [tasks, setTasks] = useState([]);
 
@@ -16,6 +17,8 @@ function Home() {
         const data = await getTasks();
         setTasks(data);
     }
+
+
     return (
          <div className="Home">
             

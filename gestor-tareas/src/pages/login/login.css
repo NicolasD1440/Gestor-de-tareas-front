@@ -1,4 +1,7 @@
-    /*contenedor principal*/
+   .body{
+         font-family: 'Poppins', sans-serif;
+   }
+   /*contenedor principal*/
     .main-container{
         display: flex;
         flex-direction: row;
@@ -6,20 +9,62 @@
     }
     /*La imagen de la izquierda*/
     .banner{
+        display: flex;
         justify-content: center;
         align-items: center;
-        border: black 1px solid;
+
         width: 100%;
-        height: 100%;
+        height: 100hv;
+        /* Ajusta los colores según tu paleta exacta */
+              background: linear-gradient(
+                    to bottom,
+                    #1976e6 0%,
+                    #155cc7 30%,
+                    #133ca6 65%,
+                    #122b8b 100%
+                   );
     }
+    .title-banner{
+        color: white;
+    }
+    .text-banner{
+        color: white;
+        gap: 0px;
+    }
+    .button-reg button{
+        background-color: #0575E6;
+        color: white;
+        padding:10px 18px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        width: 50%;
+        height: 40px;
+    }
+
     /*formulario*/
     .form-login{
-        border: black 1px solid;
+    
         width: 100%;
         height: 100vh;
         padding: 40px 30px; 
-            box-sizing: border-box;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;;
+        
     }
+    .dates-login{
+        width: 80%;
+    }
+
+    .title{
+     padding-bottom: 90px;
+     opacity: 70%;
+    }
+
      /*contenedor del formulario*/
     .dates-login form{
          display: flex;
@@ -30,6 +75,7 @@
     .dates-login label{
         font-size:.9rem;
         font-weight:600;
+        opacity: 70%;
     }
       /*Entrada de infromacion inputs*/
     .dates-login input{
@@ -39,6 +85,7 @@
         font-size:15px;
         outline:none;
         transition:.2s;
+        
     }
 
     .dates-login input:focus{
@@ -54,5 +101,17 @@
     border:none;
     border-radius:8px;
     cursor:pointer;
-    font-weight:600;
+    width: 50%;
+    height: 50px;
 }
+   .button-styles{
+      display:flex;
+      justify-content:center;
+      margin-top:10px;
+   }
+
+   .dates-login .register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }

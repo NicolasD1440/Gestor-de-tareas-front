@@ -1,6 +1,7 @@
 import "./NavBar.css";
-
+import useSession from "../../hooks/useSesions";
 function NavBar() {
+  const timeLeft = useSession();
   return (
     <div className="Nav-main">
       <div className="search">
@@ -22,6 +23,10 @@ function NavBar() {
       </div>
 
       <div className="options">
+        <div className="timmer">
+        <i className="fa-regular fa-clock"><span>{" "+timeLeft}</span></i> 
+        </div>
+        
         <i className="fa-regular fa-bell"></i>
         <i className="fa-regular fa-circle-question"></i>
         <i className="fa-regular fa-circle-user"></i>

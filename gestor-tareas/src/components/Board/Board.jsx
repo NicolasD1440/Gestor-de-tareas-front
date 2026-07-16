@@ -5,9 +5,19 @@ import  {getTasks, updateTask, deleteTask, createTask} from "../../services/task
 import { DndContext,  DragOverlay } from "@dnd-kit/core";
 import Task from "../Task/Task";
 import EditTaskModal from "../EditTaskModal/EditTaskModal";
-
+import Swal from 'sweetalert2';
 function Board() {
-
+  const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end', // Posición (esquina superior derecha)
+        showConfirmButton: false, // Sin botón de "OK"
+        timer: 2000, // Se cierra automáticamente en 2 segundos (2000ms)
+        timerProgressBar: true, // Barra visual de tiempo
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+        });
     const [tasks, setTasks] = useState([]);
     const [activeTask, setActiveTask] = useState(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
@@ -69,40 +79,31 @@ function Board() {
     }
 }
   function handleEditTask(task, rect) {
-
     const modalWidth = 420;
     const margin = 12;
-
     let left = rect.right + margin;
-
     // Si no cabe a la derecha, lo ponemos a la izquierda
     if (left + modalWidth > window.innerWidth) {
         left = rect.left - modalWidth - margin;
     }
-
     let top = rect.top;
-
     const modalHeight = 560;
-
     // Si se sale por abajo, lo subimos
     if (top + modalHeight > window.innerHeight) {
         top = window.innerHeight - modalHeight - margin;
     }
-
     setEditingTask(task);
-
     setModalPosition({
         top,
         left
     });
-
     setIsTaskModalOpen(true);
 }
     async function handleSaveTask(updatedTask) {
     try {
 
         await updateTask(editingTask.id, updatedTask);
-
+         
         setTasks(prev =>
             prev.map(task =>
                 task.id === editingTask.id
@@ -113,6 +114,7 @@ function Board() {
 
         setIsTaskModalOpen(false);
         setEditingTask(null);
+        
 
     } catch (error) {
         console.error(error);
@@ -125,13 +127,23 @@ function handleDragStart({ active }) {
 }
 
  async function handleDragEnd({ active, over }) {
-      setActiveTask(null);
+    setActiveTask(null);
+
     if (!over) return;
 
     const taskId = active.id;
     const newStatus = over.id;
 
-    // Actualiza la UI inmediatamente
+    const task = tasks.find(task => task.id === taskId);
+
+    if (!task) return;
+
+    // No cambió de columna
+    if (task.status === newStatus) {
+        return;
+        console.log("no se actualizo misma columna");
+    }
+
     setTasks(prev =>
         prev.map(task =>
             task.id === taskId
@@ -144,10 +156,13 @@ function handleDragStart({ active }) {
         await updateTask(taskId, {
             status: newStatus
         });
+
+      Toast.fire({
+          icon: 'success',
+          title: '¡Tarea actualizada'
+        });
     } catch (error) {
         console.error(error);
-
-        // Si falla el backend, recarga el estado real
         loadTasks();
     }
 }
