@@ -2,7 +2,7 @@ import Task from "../Task/Task";
 import './Colum.css'
 import { useDroppable } from "@dnd-kit/core";
 
-function Column({ id, title, tasks, onEdit, onDelete, onDuplicate}) {
+function Column({ id, title, tasks, onEdit, onDelete, onDuplicate,onCreate}) {
 
     const { setNodeRef } = useDroppable({
         id,
@@ -15,7 +15,8 @@ function Column({ id, title, tasks, onEdit, onDelete, onDuplicate}) {
                 <h2>{title}</h2>
 
                 <div className="titles-options">
-                    <button className="AddButton">
+                    <button className="AddButton"
+                    onClick={onCreate}>
                         <i className="fa-solid fa-plus"></i>
                     </button>
 

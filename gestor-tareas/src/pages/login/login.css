@@ -1,0 +1,58 @@
+    /*contenedor principal*/
+    .main-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    /*La imagen de la izquierda*/
+    .banner{
+        justify-content: center;
+        align-items: center;
+        border: black 1px solid;
+        width: 100%;
+        height: 100%;
+    }
+    /*formulario*/
+    .form-login{
+        border: black 1px solid;
+        width: 100%;
+        height: 100vh;
+        padding: 40px 30px; 
+            box-sizing: border-box;
+    }
+     /*contenedor del formulario*/
+    .dates-login form{
+         display: flex;
+         flex-direction: column;
+         gap:14px;
+    }
+    /*etiquetas*/
+    .dates-login label{
+        font-size:.9rem;
+        font-weight:600;
+    }
+      /*Entrada de infromacion inputs*/
+    .dates-login input{
+        padding:10px 14px;
+        border-radius:8px;
+        border:1px solid #ddd;
+        font-size:15px;
+        outline:none;
+        transition:.2s;
+    }
+
+    .dates-login input:focus{
+       border-color:#4f46e5;
+       box-shadow:
+        0 0 0 4px rgba(79,70,229,.15);
+    }
+
+    .dates-login button{
+    background-color: #4f46e5;
+    color: white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}

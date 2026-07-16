@@ -5,25 +5,46 @@ function EditTaskModal({isOpen,
     task,
     position,
     onClose,
-    onSave}) {
+    onSave,
+    onCreate}) {
 
+    const isEditing = !!task;
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         category: "",
         status: ""
     });
+    const modalStyle = position
+    ? {
+        position: "fixed",
+        top: position.top,
+        left: position.left,
+    }
+    : {
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+    };
 
-    useEffect(() => {
-        if (task) {
-            setFormData({
-                title: task.title,
-                description: task.description,
-                category: task.category,
-                status: task.status
-            });
-        }
-    }, [task]);
+ useEffect(() => {
+    if (task) {
+        setFormData({
+            title: task.title,
+            description: task.description,
+            category: task.category,
+            status: task.status
+        });
+    } else {
+        setFormData({
+            title: "",
+            description: "",
+            category: "",
+            status: "Por hacer"
+        });
+    }
+}, [task]);
 
     if (!isOpen) return null;
 
@@ -37,50 +58,40 @@ function EditTaskModal({isOpen,
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
+    e.preventDefault();
 
+    if (isEditing) {
         onSave(formData);
+    } else {
+        onCreate(formData);
     }
+}   
 
     return (
         <div className="modal-overlay">
 
-            <div className="modal" style={{
-        position: "fixed",
-        top: position.top,
-        left: position.left
-    }}>
-
-                <h2>Editar tarea</h2>
-
+            <div className="modal" style={modalStyle}>
+                <h2>{isEditing ? "Editar tarea" : "Nueva tarea"}</h2>
                 <form onSubmit={handleSubmit}>
-
                     <label>Título</label>
-
                     <input
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
                     />
-
                     <label>Descripción</label>
-
                     <textarea
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
                     />
-
                     <label>Categoría</label>
-
                     <input
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
                     />
-
                     <label>Estado</label>
-
                     <select
                         name="status"
                         value={formData.status}
@@ -99,17 +110,12 @@ function EditTaskModal({isOpen,
                         >
                             Cancelar
                         </button>
-
                         <button type="submit">
-                            Guardar
+                        {isEditing ? "Guardar" : "Crear"}
                         </button>
-
                     </div>
-
                 </form>
-
             </div>
-
         </div>
     );
 }

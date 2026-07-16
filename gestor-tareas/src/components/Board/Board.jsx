@@ -10,7 +10,7 @@ function Board() {
 
     const [tasks, setTasks] = useState([]);
     const [activeTask, setActiveTask] = useState(null);
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [editingTask, setEditingTask] = useState(null);
     const [modalPosition, setModalPosition] = useState({
     top: 0,
@@ -53,7 +53,21 @@ function Board() {
         }
         
     }
+  
+    async function handleCreateTask(taskData) {
+    try {
+        const newTask = await createTask(taskData);
 
+        setTasks(prev => [...prev, newTask]);
+
+        setEditingTask(null);
+        setModalPosition(null);
+        setIsTaskModalOpen(false);
+
+    } catch (error) {
+        console.error(error);
+    }
+}
   function handleEditTask(task, rect) {
 
     const modalWidth = 420;
@@ -82,7 +96,7 @@ function Board() {
         left
     });
 
-    setIsEditModalOpen(true);
+    setIsTaskModalOpen(true);
 }
     async function handleSaveTask(updatedTask) {
     try {
@@ -97,7 +111,7 @@ function Board() {
             )
         );
 
-        setIsEditModalOpen(false);
+        setIsTaskModalOpen(false);
         setEditingTask(null);
 
     } catch (error) {
@@ -137,7 +151,11 @@ function handleDragStart({ active }) {
         loadTasks();
     }
 }
-
+  function handleOpenCreateModal() {
+    setEditingTask(null);
+    setModalPosition(null);
+    setIsTaskModalOpen(true);
+}
     const columns = [
         {
             id: "Por hacer",
@@ -166,13 +184,14 @@ function handleDragStart({ active }) {
     <div className="Board">
         {columns.map(column => (
             <Column
-                key={column.id}
-                id={column.id}
-                title={column.title}
-                tasks={column.tasks}
-                onEdit={handleEditTask}
-                onDelete={handleDeleteTask}
-                onDuplicate={handleDuplicateTask}
+        key={column.id}
+        id={column.id}
+        title={column.title}
+        tasks={column.tasks}
+        onEdit={handleEditTask}
+        onDelete={handleDeleteTask}
+        onDuplicate={handleDuplicateTask}
+        onCreate={handleOpenCreateModal}
             />
         ))}
     </div>
@@ -183,14 +202,16 @@ function handleDragStart({ active }) {
         ) : null}
     </DragOverlay>
     <EditTaskModal
-    isOpen={isEditModalOpen}
+    isOpen={isTaskModalOpen}
     task={editingTask}
     position={modalPosition}
     onClose={() => {
-        setIsEditModalOpen(false);
+        setIsTaskModalOpen(false);
         setEditingTask(null);
+        setModalPosition(null);
     }}
     onSave={handleSaveTask}
+    onCreate={handleCreateTask}
   />
 
 </DndContext>

@@ -10,9 +10,6 @@ function TaskMenu({  task, onEdit, onDelete, onDuplicate, closeMenu  }) {
             closeMenu();
         }
 
-        function handleDuplicate(){
-            console.log(task);
-        }
     return (
         <div className="task-menu">
             <button onClick={handleEdit}>✏️ Editar</button>
