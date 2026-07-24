@@ -1,11 +1,12 @@
-import './login.css';
+import './register.css';
 import { useState } from "react";
-import { login } from "../../services/loginService";
+import { createNewUser } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 function Login(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullname, setFullname] = useState("");
   const navigate = useNavigate();
 
   
@@ -21,29 +22,22 @@ function Login(){
         }
         });
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
      e.preventDefault();
     try {
-        const response = await login({
+        const response = await createNewUser({
+            fullname,
             email,
             password,
         });
         console.log(response);
         navigate("/"); 
+         Toast.fire({
+          icon: 'success',
+          title: 'Usuario creado exitosamente'
+        });
         localStorage.setItem("token", response.token);
     } catch (error) {
-
-      if (!email || !password) {
-        Toast.fire({
-          icon: 'error',
-          title: 'Datos incompletos'
-        });
-      }else{
-        Toast.fire({
-          icon: 'error',
-          title: 'Datos incorrectos o el usuario no existe'
-        });
-      }
         console.log(error);
     }
    };
@@ -57,10 +51,10 @@ function Login(){
               <h1>Gestor de tareas</h1>
             </div>
             <div className='text-banner'>
-              <h2>Registrarte para usar nuestra aplicacion</h2>
+              <h2>¿Ya tienes una cuenta? Inicia sesion:</h2>
             </div>
             <div className='button-reg'>
-             <button>Registrarse</button>
+             <button>Iniciar sesion</button>
             </div>
             
         </div>
@@ -68,20 +62,22 @@ function Login(){
 
      <div className='form-login'>
        <div className='title'>
-           <h1>Inicia sesion o crea una cuenta</h1>
+           <h1>!Bienvenido! crea tu cuenta</h1>
        </div>
       
         <div className='dates-login'>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleRegister}>
+            <label>Nombre completo</label>
+          <input type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} required />
             <label>Correo</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             <label>Contraseña</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
            <div className='button-styles'>
-            <button>Iniciar sesion</button>
+            <button>Registrarse</button>
            </div>
             <div className='register'>
-               <label>¿No tienes una cuenta? <a href="register">Registrarse</a></label>
+               <label>¿Ya tienes una cuenta? Inicia sesion: <a href="login">Iniciar sesion</a></label>
             </div>
             
           </form>

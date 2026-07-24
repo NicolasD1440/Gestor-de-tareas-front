@@ -2,10 +2,18 @@ import Column from "../Colum/Colum";
 import './Board.css'
 import { useEffect, useState } from "react";
 import  {getTasks, updateTask, deleteTask, createTask} from "../../services/taskService";
-import { DndContext,  DragOverlay } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragOverlay,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import Task from "../Task/Task";
 import EditTaskModal from "../EditTaskModal/EditTaskModal";
 import Swal from 'sweetalert2';
+
 function Board() {
   const Toast = Swal.mixin({
         toast: true,
@@ -189,9 +197,20 @@ function handleDragStart({ active }) {
         }
     ];
 
+            const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+            delay: 200,
+            tolerance: 8,
+            },
+        })
+        );
+
     return (
        
 <DndContext
+    sensors={sensors}
     onDragStart={handleDragStart}
     onDragEnd={handleDragEnd}
     onDragCancel={() => setActiveTask(null)}

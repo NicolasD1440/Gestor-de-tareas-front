@@ -17,9 +17,9 @@ function Task({task, onEdit, onDelete, onDuplicate}) {
                 setShowMenu(false);
             }
         }
-        document.addEventListener("mousedown", handleClick);
+       document.addEventListener("pointerdown", handleClick);
         return () => {
-            document.removeEventListener("mousedown", handleClick);
+            document.removeEventListener("pointerdown", handleClick);
         };
     }, []);
 

@@ -11,6 +11,9 @@
     background: white;
     box-sizing: border-box;
     padding: 15px;
+
+
+    touch-action: none;
 }
 
 /* 2. Nuevo estilo para el tirador de arrastre (icono de grip) */
@@ -22,6 +25,8 @@
     color: #A0AEC0;       /* Color gris sutil para el icono */
     padding: 5px;
     user-select: none;    /* Evita que se seleccione el icono al arrastrar */
+
+    touch-action: none;
 }
 
 .drag-handle:active {
