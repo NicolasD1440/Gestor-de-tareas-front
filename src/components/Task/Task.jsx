@@ -23,18 +23,20 @@ function Task({task, onEdit, onDelete, onDuplicate}) {
         };
     }, []);
 
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-        transform,
-    } = useDraggable({
-        id: task.id,
-    });
+        const {
+            attributes,
+            listeners,
+            setNodeRef,
+            transform,
+            isDragging,
+        } = useDraggable({
+            id: task.id,
+        });
 
     const style = {
-        transform: CSS.Translate.toString(transform),
-    };
+    transform: CSS.Translate.toString(transform),
+    opacity: isDragging ? 0 : 1,
+};
 
     return (
         <div className="menu-container" ref={menuRef}>
