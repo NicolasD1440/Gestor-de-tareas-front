@@ -1,11 +1,12 @@
 import './login.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../../services/loginService";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 function Login(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
   
@@ -21,32 +22,47 @@ function Login(){
         }
         });
 
-  const handleLogin = async (e) => {
-     e.preventDefault();
-    try {
-        const response = await login({
-            email,
-            password,
-        });
-        console.log(response);
-        navigate("/"); 
-        localStorage.setItem("token", response.token);
-    } catch (error) {
+          useEffect(() => {
+        const savedEmail =
+            localStorage.getItem("rememberedEmail");
 
-      if (!email || !password) {
-        Toast.fire({
-          icon: 'error',
-          title: 'Datos incompletos'
+        if (savedEmail) {
+            setEmail(savedEmail);
+            setRememberMe(true);
+        }
+    }, []);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+        await login({
+            email,
+            password
         });
-      }else{
-        Toast.fire({
-          icon: 'error',
-          title: 'Datos incorrectos o el usuario no existe'
-        });
-      }
+
+        if (rememberMe) {
+            localStorage.setItem(
+                "rememberedEmail",
+                email
+            );
+        } else {
+            localStorage.removeItem(
+                "rememberedEmail"
+            );
+        }
+        console.log("Login terminado");
+        console.log("Redirigiendo al Home..."); 
+        navigate("/");
+    } catch (error) {
         console.log(error);
+
+        Toast.fire({
+            icon: "error",
+            title: "Datos incorrectos"
+        });
     }
-   };
+};
   
 
     return(
@@ -77,8 +93,21 @@ function Login(){
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <label>Contraseña</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+             <label>
+                <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(event) =>
+                        setRememberMe(
+                            event.target.checked
+                        )
+                    }
+                />
+
+                Recordar correo
+            </label>
            <div className='button-styles'>
-            <button>Iniciar sesion</button>
+            <button type='submit'>Iniciar sesion</button>
            </div>
             <div className='register'>
                <label>¿No tienes una cuenta? <a href="register">Registrarse</a></label>

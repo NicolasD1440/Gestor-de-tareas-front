@@ -42,3 +42,103 @@
 .options .timmer{
   padding: 20px;
 }
+
+.profile-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Botón del usuario */
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  background: transparent;
+  border: 1px solid #b8b8b8;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  border: none;
+}
+
+.profile-button i {
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.profile-button:hover {
+  background-color: #f1f5f9;
+}
+
+/* Menú */
+.dropdown-menu {
+  position: absolute;
+
+  /* Abre el menú debajo del botón */
+  top: calc(100% + 8px);
+  right: 0;
+  width: 180px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  z-index: 9999;
+}
+
+.dropdown-menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+
+  font-size: 15px;
+  color: #1f2937;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.dropdown-menu li i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Hover */
+.dropdown-menu li:hover {
+  background-color: #f1f5f9;
+}
+
+/* Separación visual antes de cerrar sesión */
+.logout-option {
+  margin-top: 5px;
+  padding-top: 12px !important;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Color de cerrar sesión */
+.logout-option,
+.logout-option i {
+  color: #dc2626;
+}
+
+.logout-option:hover {
+  background-color: #fef2f2 !important;
+}
+
+@media (max-width:768px) {
+  .search-container{
+    display: none;
+  }
+}
