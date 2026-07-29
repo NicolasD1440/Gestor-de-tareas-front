@@ -75,7 +75,7 @@ async function saveUser() {
             <div className="profile-avatar">
               <i className="fa-regular fa-circle-user"></i>
             </div>
-            <div>
+            <div className="text-profile">
               <h2>{`${formData.fullname}`}</h2>
               <p>{`${formData.email}`}</p>
             </div>
