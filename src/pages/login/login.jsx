@@ -46,10 +46,18 @@ function Login(){
                 "rememberedEmail",
                 email
             );
+                Toast.fire({
+                    icon: 'success',
+                    title: '¡Bienvenido! Sesión iniciada'
+                });
         } else {
             localStorage.removeItem(
                 "rememberedEmail"
             );
+            Toast.fire({
+                icon: 'success',
+                title: '¡Bienvenido! Sesión iniciada'
+            });
         }
         console.log("Login terminado");
         console.log("Redirigiendo al Home..."); 
@@ -66,7 +74,7 @@ function Login(){
   
 
     return(
-    <div className='main-container'>
+    <div className='main-container-login'>
      <div className='banner'>
         <div className='content-banner'>
             <div className='title-banner'>
@@ -76,7 +84,7 @@ function Login(){
               <h2>Registrarte para usar nuestra aplicacion</h2>
             </div>
             <div className='button-reg'>
-             <button>Registrarse</button>
+             <button onClick={() => navigate("/register")}>Registrarse</button>
             </div>
             
         </div>

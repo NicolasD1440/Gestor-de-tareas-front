@@ -44,7 +44,7 @@ function Login(){
   
 
     return(
-    <div className='main-container'>
+    <div className='main-container-register'>
      <div className='banner'>
         <div className='content-banner'>
             <div className='title-banner'>
@@ -54,7 +54,7 @@ function Login(){
               <h2>¿Ya tienes una cuenta? Inicia sesion:</h2>
             </div>
             <div className='button-reg'>
-             <button>Iniciar sesion</button>
+             <button onClick={() => navigate("/login")}>Iniciar sesion</button>
             </div>
             
         </div>

@@ -1,0 +1,160 @@
+/* Contenedor principal del componente Profile */
+.main-container {
+  width: 100%;
+  padding: 1.5rem; /* MISMO padding lateral que el NavBar (1.5rem) */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* La tarjeta blanca */
+.profile-container {
+  width: 100%;             /* Ocupa el 100% del espacio útil */
+  max-width: none;          /* IMPORTANTE: Quitamos cualquier límite para que no se encoja */
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;          /* Padding interno de la tarjeta */
+  box-sizing: border-box;
+}
+
+/* Cabecera del perfil */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-avatar {
+  font-size: 3rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.profile-info p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.save-btn,
+.cancel-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Editar */
+.edit-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Guardar */
+.save-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+}
+
+/* Cancelar */
+.cancel-btn {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+    transform: translateY(-2px);
+}
+/* Formulario en Grid de 2 columnas */
+.profile-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: #334155;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-group input:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 640px) {
+  .profile-form {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .edit-btn {
+    width: 100%;
+  }
+}

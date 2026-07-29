@@ -72,11 +72,24 @@
     gap: 8px;
 }
 
-.task-status {
+.task-status.todo{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #22C55E; /* Verde */
+    background-color: #9CA3AF; /* Verde */
+}
+
+.task-status.progress {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FACC15;
+}
+.task-status.done {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22C55E;
 }
 
 .Task h5 {

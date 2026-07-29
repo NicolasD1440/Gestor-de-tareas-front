@@ -2,7 +2,7 @@
          font-family: 'Poppins', sans-serif;
    }
    /*contenedor principal*/
-    .main-container{
+    .main-container-register{
         display: flex;
         flex-direction: row;
         justify-content: space-between;

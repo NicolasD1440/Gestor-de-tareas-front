@@ -7,7 +7,11 @@ import { CSS } from "@dnd-kit/utilities";
 function Task({task, onEdit, onDelete, onDuplicate}) {
     const [showMenu, setShowMenu] = useState(false);
     const menuRef = useRef(null);
-
+    const statusClass = {
+    "Por hacer": "todo",
+    "En progreso": "progress",
+    "Hecho": "done",
+    };
     useEffect(() => {
         function handleClick(event) {
             if (
@@ -54,7 +58,7 @@ function Task({task, onEdit, onDelete, onDuplicate}) {
                 <div className="task-content">
                     <div className="task-category">
                         <div className="task-info">
-                            <span className="task-status"></span>
+                            <span className={`task-status ${statusClass[task.status]}`}></span>
                             <small>{task.category}</small>
                         </div>
 

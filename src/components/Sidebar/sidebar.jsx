@@ -1,20 +1,24 @@
 import "./sidebar.css";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
 const menu = [
     {
-        icon: "fa-solid fa-house-user",
-        title: "Inicio"
+      icon: "fa-solid fa-house-user",
+      title: "Inicio",
+      path: "/panel" // Cambia a "/" si tu Inicio es la raíz
     },
     {
-        icon: "fa-solid fa-table-list",
-        title: "Tablero"
+      icon: "fa-solid fa-table-list",
+      title: "Tablero",
+      path: "/" // O la ruta correspondiente a tu tablero, ej: "/board"
     },
     {
-        icon: "fa-regular fa-circle-user",
-        title: "Perfil"
+      icon: "fa-regular fa-circle-user",
+      title: "Perfil",
+      path: "/profile"
     }
-];
+  ];
     return (
 
         <aside className="Sidebar">
@@ -23,16 +27,18 @@ const menu = [
                 <h2>Gestor Tareas</h2>
             </div>
             <nav className="Sidebar-menu">
-                 {menu.map(item => (
-        <button
+                 {menu.map((item) => (
+        <NavLink
             key={item.title}
-            className={`Sidebar-item ${item.title === "Tablero" ? "active" : ""}`}
-        >
+            to={item.path}
+            className={({ isActive }) =>
+              `Sidebar-item ${isActive ? "active" : ""}`
+            }
+          >
             <i className={item.icon}></i>
             <span>{item.title}</span>
-        </button>
-
-    ))}
+          </NavLink>
+        ))}
             </nav>
 
         </aside>
