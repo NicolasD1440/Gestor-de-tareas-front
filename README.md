@@ -1,6 +1,13 @@
 # 📋 Gestor de tareas (Frontend)
 
 Aplicación web desarrollada con React que permite gestionar tareas mediante un tablero interactivo. Los usuarios pueden crear, editar, eliminar y organizar tareas según su estado.
+## 🌍 Despliegue
+
+| Servicio | Enlace |
+|----------|----------|
+| Aplicación | https://nicolasdev.duckdns.org/login |
+| Frontend | [Frontend](https://github.com/NicolasD1440/Gestor-de-tareas-front) |
+| Backend | [Bakend](https://github.com/NicolasD1440/Gestor-de-tareas-backend) |
 
 ## ✨ Características
 
