@@ -129,13 +129,9 @@ VITE_API_URL=http://localhost:5000
 VITE_API_URL=/api
 ```
 
-## 📸 Capturas de pantalla
-
-Aquí puedes agregar imágenes del inicio de sesión, el tablero y el perfil del usuario.
-
 ## 👨‍💻 Autor
 
 **Nicolás D.**
 
-- GitHub: https://github.com/tu-usuario
-- LinkedIn: https://www.linkedin.com/
+- GitHub: https://github.com/NicolasD1440
+- LinkedIn: https://www.linkedin.com/in/deivy-nicol%C3%A1s-castiblanco-infante/
