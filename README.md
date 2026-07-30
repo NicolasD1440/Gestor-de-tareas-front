@@ -1,3 +1,7 @@
+## 🔗 Repositorio del Backend
+El código de la API y lógica del servidor para este proyecto se encuentra en: 
+[Gestor-de-tareas-backend](https://github.com/tu-usuario/Gestor-de-tareas-backend)
+
 ### Configuración de Nginx
 
 ```nginx
