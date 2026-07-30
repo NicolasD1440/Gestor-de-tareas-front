@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./EditTaskModal.css";
 
-function EditTaskModal({isOpen,
+function EditTaskModal({
+    isOpen,
     task,
-    position,
     onClose,
     onSave,
-    onCreate}) {
+    onCreate
+}) {
 
     const isEditing = !!task;
     const [formData, setFormData] = useState({
@@ -15,18 +16,6 @@ function EditTaskModal({isOpen,
         category: "",
         status: ""
     });
-    const modalStyle = position
-    ? {
-        position: "fixed",
-        top: position.top,
-        left: position.left,
-    }
-    : {
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-    };
 
  useEffect(() => {
     if (task) {
@@ -70,7 +59,7 @@ function EditTaskModal({isOpen,
     return (
         <div className="modal-overlay">
 
-            <div className="modal" style={modalStyle}>
+            <div className="modal">
                 <h2>{isEditing ? "Editar tarea" : "Nueva tarea"}</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Título</label>

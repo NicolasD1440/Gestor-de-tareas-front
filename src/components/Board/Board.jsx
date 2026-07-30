@@ -30,10 +30,7 @@ function Board() {
     const [activeTask, setActiveTask] = useState(null);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
     const [editingTask, setEditingTask] = useState(null);
-    const [modalPosition, setModalPosition] = useState({
-    top: 0,
-    left: 0
-    });
+    
 
     useEffect(() => {
         loadTasks();
@@ -79,32 +76,14 @@ function Board() {
         setTasks(prev => [...prev, newTask]);
 
         setEditingTask(null);
-        setModalPosition(null);
         setIsTaskModalOpen(false);
 
     } catch (error) {
         console.error(error);
     }
 }
-  function handleEditTask(task, rect) {
-    const modalWidth = 420;
-    const margin = 12;
-    let left = rect.right + margin;
-    // Si no cabe a la derecha, lo ponemos a la izquierda
-    if (left + modalWidth > window.innerWidth) {
-        left = rect.left - modalWidth - margin;
-    }
-    let top = rect.top;
-    const modalHeight = 560;
-    // Si se sale por abajo, lo subimos
-    if (top + modalHeight > window.innerHeight) {
-        top = window.innerHeight - modalHeight - margin;
-    }
+  function handleEditTask(task) {
     setEditingTask(task);
-    setModalPosition({
-        top,
-        left
-    });
     setIsTaskModalOpen(true);
 }
     async function handleSaveTask(updatedTask) {
@@ -176,7 +155,7 @@ function handleDragStart({ active }) {
 }
   function handleOpenCreateModal() {
     setEditingTask(null);
-    setModalPosition(null);
+   
     setIsTaskModalOpen(true);
 }
     const columns = [
@@ -240,15 +219,13 @@ function handleDragStart({ active }) {
     <EditTaskModal
     isOpen={isTaskModalOpen}
     task={editingTask}
-    position={modalPosition}
     onClose={() => {
         setIsTaskModalOpen(false);
         setEditingTask(null);
-        setModalPosition(null);
     }}
     onSave={handleSaveTask}
     onCreate={handleCreateTask}
-  />
+/>
 
 </DndContext>
     );
