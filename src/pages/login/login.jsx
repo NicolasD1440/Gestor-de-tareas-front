@@ -82,6 +82,7 @@ function Login(){
             </div>
             <div className='text-banner'>
               <h2>Registrarte para usar nuestra aplicacion</h2>
+              
             </div>
             <div className='button-reg'>
              <button onClick={() => navigate("/register")}>Registrarse</button>
@@ -93,6 +94,27 @@ function Login(){
      <div className='form-login'>
        <div className='title'>
            <h1>Inicia sesion o crea una cuenta</h1>
+            <div className="demo-account">
+            <h3>Cuenta de demostración</h3>
+
+            <p>
+                Explora la aplicación sin crear una cuenta.
+            </p>
+
+            <div className="demo-data">
+                <span><strong>Correo:</strong> example@gmail.com</span>
+                <span><strong>Contraseña:</strong> 12345</span>
+            </div>
+            <button
+                type="button"
+                onClick={() => {
+                    setEmail("example@gmail.com");
+                    setPassword("12345");
+                }}
+            >
+                Usar cuenta de prueba
+            </button>
+          </div>
        </div>
       
         <div className='dates-login'>
